@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 simple-file-checksum = "*"
+pydub = "*"
 
 [dev-packages]
 
