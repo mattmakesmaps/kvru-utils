@@ -1,5 +1,6 @@
 # mk additions
 
+launch.json
 test_data/*
 
 # Byte-compiled / optimized / DLL files
