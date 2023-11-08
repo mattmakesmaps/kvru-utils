@@ -1,9 +1,14 @@
 import argparse
-from Ledger import Ledger
-from utils import convert_to_mp3
+import logging
+import os
+import pathlib
 
+from Ledger import Ledger
 
 if __name__ == '__main__':
+    logpath = os.path.dirname(os.path.realpath(__file__)) + '/mp3-convert.log'
+    logging.basicConfig(filename=logpath, level=logging.INFO)
+
     parser = argparse.ArgumentParser(description='Convert audio files to mp3 format.')
     parser.add_argument('inputdir')
     parser.add_argument('outputdir')
@@ -13,10 +18,12 @@ if __name__ == '__main__':
     parser.add_argument('--verbose', action='store_true', help='Print verbose output')
     args = parser.parse_args()
 
-    INPUT_DIR = args.inputdir
-    OUTPUT_DIR = args.outputdir
+    INPUT_DIR = pathlib.Path(args.inputdir)
+    OUTPUT_DIR = pathlib.Path(args.outputdir)
 
     ledger = Ledger()
     ledger.searchForFiles(INPUT_DIR)
 
-    convert_to_mp3(ledger.files[0].filepath, '/home/matt/Desktop/test2.mp3', args.bitrate)
+    logging.info('Found {} files in {}'.format(len(ledger.files), INPUT_DIR))
+
+    ledger.convertAll(INPUT_DIR, OUTPUT_DIR, args.bitrate)
