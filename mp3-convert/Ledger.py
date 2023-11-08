@@ -10,7 +10,7 @@ logger = logging.getLogger('mp3-convert.ledger')
 class Ledger:
     def __init__(self):
         self.files = []
-        self.INPUT_FORMATS = ('.mp3', '.wav', '.aif')
+        self.INPUT_FORMATS = ('.mp3', '.wav', '.aif', '.aiff')
 
     def searchForFiles(self, inputdir):
         """
