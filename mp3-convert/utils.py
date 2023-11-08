@@ -11,5 +11,6 @@ def convert_to_mp3(infile, outfile, bitrate):
     except Exception as e:
         logging.error('Failed to convert {}'.format(infile))
         logging.error(e)
+        return False
 
     return True
