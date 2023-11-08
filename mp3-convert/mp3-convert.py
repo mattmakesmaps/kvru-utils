@@ -5,7 +5,7 @@ import pathlib
 
 from datetime import datetime
 
-from Ledger import Ledger
+from ledger import Ledger
 
 if __name__ == "__main__":
     logger = logging.getLogger("mp3-convert")
@@ -40,16 +40,16 @@ if __name__ == "__main__":
     INPUT_DIR = pathlib.Path(args.inputdir)
     OUTPUT_DIR = pathlib.Path(args.outputdir)
 
-    logger.info("Run Beginning. Input: {}, Output: {}".format(INPUT_DIR, OUTPUT_DIR))
+    logger.info("Run Beginning. Input: %s, Output: %s", INPUT_DIR, OUTPUT_DIR)
     starttime = datetime.now()
 
     ledger = Ledger()
-    ledger.searchForFiles(INPUT_DIR)
+    ledger.search_for_files(INPUT_DIR)
 
-    logger.info("Found {} files in {}".format(len(ledger.files), INPUT_DIR))
+    logger.info("Found %d files in %s", len(ledger.files), INPUT_DIR)
 
     if not args.dry_run:
-        ledger.convertAll(INPUT_DIR, OUTPUT_DIR, args.bitrate)
+        ledger.convert_all(INPUT_DIR, OUTPUT_DIR, args.bitrate)
 
     elapsedtime = datetime.now() - starttime
-    logger.info("Run Complete: Total Time: {}".format(elapsedtime))
+    logger.info("Run Complete: Total Time: %s", elapsedtime)
