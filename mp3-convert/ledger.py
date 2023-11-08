@@ -1,4 +1,4 @@
-"""Ledger class which manages processing of individual music files."""
+"""ledger class which manages processing of individual music files."""
 import logging
 import os
 import shutil
@@ -34,6 +34,8 @@ class Ledger:
     def convert_all(self, source_root, dest_root, bitrate):
         """
         Convert all files in self.files to mp3 format and write them to outputdir.
+
+        - Existing MP3s will be copied directly to outputdir.
         """
         for music_file in self.files:
             # Create absolute path to output file
