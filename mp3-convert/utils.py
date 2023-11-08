@@ -15,9 +15,17 @@ def convert_to_mp3(infile, outfile, bitrate):
     try:
         metadata = mediainfo(infile)
         infile_handle = AudioSegment.from_file(infile)
-        infile_handle.export(
-            outfile, format="mp3", bitrate=bitrate, tags=metadata["TAG"]
-        )
+
+        # Include metadata if present in source file.
+        if "TAG" in metadata:
+            infile_handle.export(
+                outfile, format="mp3", bitrate=bitrate, tags=metadata["TAG"]
+            )
+        else:
+            infile_handle.export(
+                outfile, format="mp3", bitrate=bitrate
+            )
+
         logger.info("Converted %s", outfile)
     except Exception as e:
         logger.error("Failed to convert %s", infile)
