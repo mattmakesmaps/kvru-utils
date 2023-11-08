@@ -8,10 +8,16 @@ from datetime import datetime
 from Ledger import Ledger
 
 if __name__ == '__main__':
+    logger = logging.getLogger('mp3-convert')
+    logger.setLevel(logging.INFO)
     logpath = os.path.dirname(os.path.realpath(__file__)) + '/mp3-convert.log'
-    logging.basicConfig(filename=logpath,
-                        format='%(asctime)s - %(levelname)s - %(message)s',
-                        level=logging.INFO)
+    loggerFileHandler = logging.FileHandler(logpath)
+    loggerConsoleHandler = logging.StreamHandler()
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    loggerFileHandler.setFormatter(formatter)
+    loggerConsoleHandler.setFormatter(formatter)
+    logger.addHandler(loggerFileHandler)
+    logger.addHandler(loggerConsoleHandler)
 
     parser = argparse.ArgumentParser(description='Convert audio files to mp3 format.')
     parser.add_argument('inputdir')
@@ -24,17 +30,16 @@ if __name__ == '__main__':
     INPUT_DIR = pathlib.Path(args.inputdir)
     OUTPUT_DIR = pathlib.Path(args.outputdir)
 
-
-    logging.info('Run Beginning. Input: {}, Output: {}'.format(INPUT_DIR, OUTPUT_DIR))
+    logger.info('Run Beginning. Input: {}, Output: {}'.format(INPUT_DIR, OUTPUT_DIR))
     starttime = datetime.now()
 
     ledger = Ledger()
     ledger.searchForFiles(INPUT_DIR)
 
-    logging.info('Found {} files in {}'.format(len(ledger.files), INPUT_DIR))
+    logger.info('Found {} files in {}'.format(len(ledger.files), INPUT_DIR))
 
     if not args.dry_run:
         ledger.convertAll(INPUT_DIR, OUTPUT_DIR, args.bitrate)
 
     elapsedtime = datetime.now() - starttime
-    logging.info('Run Complete: Total Time: {}'.format(elapsedtime))
+    logger.info('Run Complete: Total Time: {}'.format(elapsedtime))

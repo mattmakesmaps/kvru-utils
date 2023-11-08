@@ -5,6 +5,8 @@ import shutil
 from MusicFile import MusicFile
 from utils import convert_to_mp3
 
+logger = logging.getLogger('mp3-convert.ledger')
+
 class Ledger:
     def __init__(self):
         self.files = []
@@ -30,14 +32,14 @@ class Ledger:
             destFullPath = os.path.join(destRoot,sourceRelativePath)
 
             if os.path.exists(destFullPath):
-                logging.info('Skipping {} because it already exists'.format(destFullPath))
+                logger.info('Skipping {} because it already exists'.format(destFullPath))
                 continue
 
             if not os.path.exists(os.path.dirname(destFullPath)):
                 os.makedirs(os.path.dirname(destFullPath))
 
             if music_file.filepath.suffix == '.mp3':
-                logging.info('Copying existing MP3 {}'.format(destFullPath))
+                logger.info('Copying existing MP3 {}'.format(destFullPath))
                 shutil.copyfile(music_file.filepath, destFullPath)
             else:
                 convert_to_mp3(music_file.filepath, destFullPath, bitrate)
