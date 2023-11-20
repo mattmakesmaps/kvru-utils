@@ -19,6 +19,12 @@ if __name__ == "__main__":
     logger.addHandler(loggerFileHandler)
     logger.addHandler(loggerConsoleHandler)
 
+    checksum_logger = logging.getLogger("checksum")
+    checksum_logger.setLevel(logging.INFO)
+    checksum_logpath = os.path.dirname(os.path.realpath(__file__)) + "/mp3-convert-checksums.log"
+    checksum_loggerFileHandler = logging.FileHandler(checksum_logpath)
+    checksum_logger.addHandler(checksum_loggerFileHandler)
+
     parser = argparse.ArgumentParser(description="Convert audio files to mp3 format.")
     parser.add_argument("inputdir")
     parser.add_argument("outputdir")

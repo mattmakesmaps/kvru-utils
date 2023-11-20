@@ -7,6 +7,7 @@ from musicfile import MusicFile
 from utils import convert_to_mp3
 
 logger = logging.getLogger("mp3-convert.ledger")
+checksum_logger = logging.getLogger("checksum.ledger")
 
 
 class Ledger:
@@ -40,8 +41,9 @@ class Ledger:
         for music_file in self.files:
             # Create absolute path to output file
             source_relative_path = os.path.relpath(music_file.filepath, source_root)
-            source_relative_path = os.path.splitext(source_relative_path)[0] + ".mp3"
-            dest_full_path = os.path.join(dest_root, source_relative_path)
+            source_filename = os.path.basename(source_relative_path)
+            dest_filename = os.path.splitext(source_filename)[0] + ".mp3"
+            dest_full_path = os.path.join(dest_root, dest_filename)
 
             if os.path.exists(dest_full_path):
                 logger.info(
@@ -57,3 +59,5 @@ class Ledger:
                 shutil.copyfile(music_file.filepath, dest_full_path)
             else:
                 convert_to_mp3(music_file.filepath, dest_full_path, bitrate)
+            
+            checksum_logger.info("%s,%s", music_file.checksum, source_filename)
