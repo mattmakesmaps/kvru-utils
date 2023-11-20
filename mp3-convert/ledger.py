@@ -14,6 +14,9 @@ class Ledger:
     A class that represents a ledger of music files.
 
     Attributes:
+    - source_root: The root directory to search for music files.
+    - dest_root: The root directory to write converted files to.
+    - checksum_csv_path: The path to a CSV file to log checksums to.
     - files: A list of MusicFile objects.
     - INPUT_FORMATS: A tuple of input file formats that the class searches for.
     """
@@ -26,7 +29,7 @@ class Ledger:
         self.INPUT_FORMATS = (".mp3", ".wav", ".aif", ".aiff")
 
     def _log_checksum(self, checksum, source_filename, dest_filename):
-        with open(self.checksum_csv_path, "a") as csvfile:
+        with open(self.checksum_csv_path, "a", encoding="utf-8") as csvfile:
             checksum_writer = csv.writer(csvfile, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
             checksum_writer.writerow([checksum, source_filename, dest_filename])
 
