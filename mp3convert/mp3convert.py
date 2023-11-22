@@ -1,3 +1,4 @@
+import sys
 import argparse
 import logging
 import os
@@ -5,10 +6,9 @@ import pathlib
 
 from datetime import datetime
 
-from .ledger import Ledger
+from mp3convertpackage import Ledger
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(description="Convert audio files to mp3 format.")
     parser.add_argument("inputdir")
     parser.add_argument("outputdir")

@@ -1,6 +1,7 @@
 # Package import pattern REF: https://docs.python-guide.org/writing/structure/#test-suite
-from context import mp3convert
-from mp3convert.ledger import Ledger
+from context import mp3convertackage
+
+from mp3convertpackage import Ledger
 
 # content of test_sample.py
 def func(x):

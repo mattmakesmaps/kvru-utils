@@ -4,8 +4,8 @@ import logging
 import os
 import shutil
 
-from .utils import convert_to_mp3
-from .musicfile import MusicFile
+from mp3convertpackage.utils import convert_to_mp3
+from mp3convertpackage.musicfile import MusicFile
 
 logger = logging.getLogger("mp3convert.ledger")
 
