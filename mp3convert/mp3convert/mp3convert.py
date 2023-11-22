@@ -40,7 +40,7 @@ if __name__ == "__main__":
     LOGPATH = os.path.dirname(os.path.realpath(__file__)) + "/mp3convert.log"
     CHECKSUM_CSV_PATH = os.path.dirname(os.path.realpath(__file__)) + "/mp3convert-checksums.log"
 
-    logger = logging.getLogger("mp3-convert")
+    logger = logging.getLogger("mp3convert")
     logger.setLevel(logging.INFO)
     loggerFileHandler = logging.FileHandler(LOGPATH)
     loggerConsoleHandler = logging.StreamHandler()
