@@ -4,10 +4,10 @@ import logging
 import os
 import shutil
 
-from musicfile import MusicFile
-from utils import convert_to_mp3
+from .utils import convert_to_mp3
+from .musicfile import MusicFile
 
-logger = logging.getLogger("mp3-convert.ledger")
+logger = logging.getLogger("mp3convert.ledger")
 
 class Ledger:
     """

@@ -5,7 +5,7 @@ import pathlib
 
 from datetime import datetime
 
-from ledger import Ledger
+from .ledger import Ledger
 
 if __name__ == "__main__":
 
@@ -37,8 +37,8 @@ if __name__ == "__main__":
 
     INPUT_DIR = pathlib.Path(args.inputdir)
     OUTPUT_DIR = pathlib.Path(args.outputdir)
-    LOGPATH = os.path.dirname(os.path.realpath(__file__)) + "/mp3-convert.log"
-    CHECKSUM_CSV_PATH = os.path.dirname(os.path.realpath(__file__)) + "/mp3-convert-checksums.log"
+    LOGPATH = os.path.dirname(os.path.realpath(__file__)) + "/mp3convert.log"
+    CHECKSUM_CSV_PATH = os.path.dirname(os.path.realpath(__file__)) + "/mp3convert-checksums.log"
 
     logger = logging.getLogger("mp3-convert")
     logger.setLevel(logging.INFO)
