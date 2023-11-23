@@ -14,7 +14,7 @@ Run via `pipenv`:
 
 Run Tests:
 
-`pipenv run pytest`
+from `./mp3convert/tests/` run `pipenv run python -m unittest`
 
 ## Notes
 
