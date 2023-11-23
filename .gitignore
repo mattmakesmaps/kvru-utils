@@ -1,7 +1,7 @@
 # mk additions
 
 launch.json
-test_data/*
+mp3convert/tests/test_data/dest/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
