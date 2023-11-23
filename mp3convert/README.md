@@ -40,8 +40,10 @@ options:
   -b BITRATE, --bitrate BITRATE
                         Bitrate of the output wav files
   -l LOGDIR, --logdir LOGDIR
-                        Specify dir for logfiles. Two are created, one containing checksums and another containing stdout messages. Defaults to parent dir of this script.
+                        Specify dir for logfiles. Two are created, one containing checksums and 
+                        another containing stdout messages. Defaults to parent dir of this script.
   --separate-missing-metadata
-                        Create two subdirs in outputdir, one for files with metadata and one for files without metadata.
+                        Create two subdirs in outputdir, one for files with metadata and one 
+                        for files without metadata.
   --dry-run             Do not actually convert files
 ```
