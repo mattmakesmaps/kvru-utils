@@ -16,6 +16,8 @@ Run Tests:
 
 from `./mp3convert/tests/` run `pipenv run python -m unittest`
 
+- Use `foobar2000` to edit metadata for test files.
+
 ## Notes
 
 - Default behavior is to copy the directory structure of `inputdir` to `outputdir`
