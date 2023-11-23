@@ -27,7 +27,7 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "--flat", action="store_true", help="Do not preserve directory structure"
+        "--separate-missing-metadata", action="store_true", help="Create two subdirs in outputdir, one for files with metadata and one for files without metadata."
     )
     parser.add_argument(
         "--dry-run", action="store_true", help="Do not actually convert files"
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     logger.info("Run Beginning. Input: %s, Output: %s", INPUT_DIR, OUTPUT_DIR)
     starttime = datetime.now()
 
-    ledger = Ledger(INPUT_DIR, OUTPUT_DIR, CHECKSUM_CSV_PATH)
+    ledger = Ledger(INPUT_DIR, OUTPUT_DIR, CHECKSUM_CSV_PATH, args.separate_missing_metadata)
     ledger.search_for_files()
 
     logger.info("Found %d files in %s", len(ledger.files), INPUT_DIR)

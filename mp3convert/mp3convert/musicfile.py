@@ -1,3 +1,4 @@
+import os
 from simple_file_checksum import get_checksum
 
 
@@ -10,3 +11,9 @@ class MusicFile:
     @property
     def checksum(self):
         return self._checksum
+    
+    def generate_relative_path(self, root):
+        """
+        Generate a relative path to this file from a given root directory.
+        """
+        return os.path.relpath(self.filepath, root)

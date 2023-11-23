@@ -5,6 +5,17 @@ from pydub.utils import mediainfo
 
 logger = logging.getLogger("mp3convert.utils")
 
+def has_metadata(infile):
+    """
+    Check if an audio file has metadata.
+
+    Return True if metadata is present, False if not.
+    """
+    metadata = mediainfo(infile)
+    if "TAG" in metadata:
+        return True
+    else:
+        return False
 
 def convert_to_mp3(infile, outfile, bitrate):
     """
