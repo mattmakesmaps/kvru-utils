@@ -5,4 +5,4 @@ import sys
 package_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, package_path)
 
-import mp3convertpackage
+import mp3convert
