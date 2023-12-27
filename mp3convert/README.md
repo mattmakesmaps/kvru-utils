@@ -4,15 +4,15 @@ Convert a source directory of WAV/AIFF/MP3 files to MP3 format.
 
 Relies on [pydub](https://github.com/jiaaro/pydub) and `ffmpeg` for conversion.
 
-Install via `pipenv`:
+**Install via `pipenv`:**
 
 `pipenv install --dev`
 
-Run via `pipenv`:
+**Run via `pipenv`:**
 
 `pipenv run python ./mp3-convert.py --help`
 
-Run Tests:
+**Run Tests:**
 
 from `./mp3convert/tests/` run `pipenv run python -m unittest`
 
