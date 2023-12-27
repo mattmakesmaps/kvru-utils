@@ -28,7 +28,7 @@ class Ledger:
         self.checksum_csv_path = checksum_csv_path
         self.separate_missing_metadata = separate_missing_metadata
         self.files = []
-        self.INPUT_FORMATS = (".mp3", ".wav", ".aif", ".aiff")
+        self.INPUT_FORMATS = (".mp3", ".wav", ".aif", ".aiff", ".wma")
 
     def _log_checksum(self, checksum, source_filename, dest_filename):
         with open(self.checksum_csv_path, "a", encoding="utf-8") as csvfile:
