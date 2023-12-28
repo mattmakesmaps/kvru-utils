@@ -3,6 +3,7 @@
 launch.json
 mp3convert/tests/test_data/dest/
 mp3convert/prod/
+experiments/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
